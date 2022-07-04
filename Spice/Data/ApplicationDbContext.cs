@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Spice.Models;
 
+
 namespace Spice.Data
 {
     public class ApplicationDbContext : IdentityDbContext
@@ -22,5 +23,8 @@ namespace Spice.Data
         public DbSet<ShoppingCart> ShoppingCart { get; set; }
         public DbSet<OrderHeader> OrderHeader { get; set; }
         public DbSet<OrderDetails> OrderDetails { get; set; }
+
+        public DbSet<ContactUs> ContactUs { get; set; }
+
     }
 }

@@ -49,7 +49,7 @@ namespace Spice.Controllers
             return View(IndexVM);
         }
 
-        [Authorize]
+         [Authorize]
         public async Task<IActionResult> Details(int id)
         {
             var menuItemFromDb = await _db.MenuItem.Include(m => m.Category).Include(m => m.SubCategory).Where(m => m.Id == id).FirstOrDefaultAsync();
@@ -109,10 +109,6 @@ namespace Spice.Controllers
             }
         }
 
-
-
-
-
         public IActionResult Privacy()
         {
             return View();
@@ -123,5 +119,27 @@ namespace Spice.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+        public IActionResult AboutUs()
+        {
+            return View();
+        }
+        public IActionResult Support()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Support( ContactUs contactUs)
+        {
+            if (ModelState.IsValid)
+            {
+                _db.ContactUs.Add(contactUs);
+                await _db.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            return View( contactUs);
+        }
     }
+
 }

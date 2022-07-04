@@ -1,0 +1,78 @@
+﻿@model ContactUs
+@{
+    ViewData["Title"] = "Support";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@*<form method="post" asp-action="">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" required /><br />
+
+        <label asp-for="EmailId"></label>
+        <input asp-for="EmailId" required /> <br />
+
+        <label asp-for="PhoneNumber"></label>
+        <input asp-for="PhoneNumber" /> <br />
+        <label asp-for="Query"></label>
+        <input asp-for="Query"  required/> <br />
+        <input  type="submit" value="Support"/>
+
+
+    </form>*@
+
+
+<br />
+<h2 class="text-info">Enquery About the Products</h2>
+<br />
+
+<form method="post" asp-action="Support">
+    <div class="border backgroundWhite">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="Name" class="col-form-label"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="Name" class="form-control" />
+            </div>
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="EmailId" class="col-form-label"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="EmailId" class="form-control" />
+            </div>
+            <span asp-validation-for="EmailId" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="PhoneNumber" class="col-form-label"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="PhoneNumber" class="form-control" />
+            </div>
+            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="Query" class="col-form-label"></label>
+            </div>
+            <div class="col-5">
+                <textarea asp-for="Query" class="form-control" ></textarea>
+            </div>
+            <span asp-validation-for="Query" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-5 offset-2">
+                <partial name="_CreateAndBackToListButton" />
+            </div>
+        </div>
+    </div>
+</form>
+
+@section Scripts{
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
